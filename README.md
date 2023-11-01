@@ -1,58 +1,66 @@
-# Prueba técnica PHP/Laravel
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## Notas:
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-- Tiempo para resolver la prueba es de 2 días
-- En caso de tener dudas escribir al correo <adrian.galicia@koltin.com.mx>
+## About Laravel
 
-## Caso práctico
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Necesitamos una prueba piloto de un blog. Lo queremos mantener separado, así que debemos empezar un nuevo proyecto.
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Empezaremos con algo sencillo, solo queremos autores, posts, comentarios respecto a los autores y los posts, dichos comentarios serán almacenados en formato WYSIWYG (no vamos a gestionar categorías, multimedia ni nada de eso). Vamos a necesitar acceder al contenido del blog desde otras aplicaciones, lo que nos requiere exponer una API.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-Por tanto, este proyecto debe tener lo siguiente:
+## Learning Laravel
 
-- Design doc de la solución
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-- Blog público
-    - Lista de posts
-    - Página de post incluyendo comentarios, donde se mostrará una pequeña ficha del autor
-    - Página de autor con sus incluyendo comentarios
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-- API
-    - Endpoint GET para la obtención de posts, incluyendo autor y comentarios
-    - Endpoint POST para la publicación de un post.
-    - Endpoint POST para el registro de autor.
-    - Endpoint GET para obtener los autores, incluyendo comentarios y posts relacionados
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-- Comando que exporte a google sheets los comentarios recibiendo un rango de fechas
+## Laravel Sponsors
 
-**Bonus**
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
 
-- Desplegar el proyecto.
+### Premium Partners
 
-El objetivo de la prueba es la demostración de :
- - Conocimientos en Laravel y PHP, por lo que se primará el cuidado de la estructura backend.
- - La correcta separación de servicios y responsabilidades
- - Introducción de interfaces, tolerancia ante fallos, etc. 
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Cubet Techno Labs](https://cubettech.com)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[Many](https://www.many.co.uk)**
+- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
+- **[DevSquad](https://devsquad.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[OP.GG](https://op.gg)**
+- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+- **[Lendio](https://lendio.com)**
 
-Para la parte front no requerimos una gran labor de maquetación. Puedes usar librerías adicionales a las del framework si lo necesitas. También en la parte de front, puedes usar Bootstrap, Bulma, Tailwind u otro framework CSS.
+## Contributing
 
-## Requisitos:
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-- PHP 8.0+
-- Composer y estructura PSR-4 en el proyecto
-- La última versión estable de Laravel
-- Testing unitario
-- La API debe devolver y consumir los datos en formato JSON
-- Programar en el idioma inglés
-- Uso de herramientas de análisis estático (por ejemplo PHPStan en modo máximo) y de estilo de código (por ejemplo PHP CS Fixer en modo @Symfony)
-- Uso de SCSS y Webpack, ya sea usando Webpack directamente o mediante Symfony Encore / Laravel Mix o similar
-- Ofrecer un Swagger/OpenAPI para la parte de la API
+## Code of Conduct
 
-Para la entrega, puedes mandarnos un enlace a un repositorio público (GitHub, GitLab u otro sitio donde tengas cuenta).
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-Lo que sí nos gustaría que incluyeras es un README explicando la prueba y cualquier cosa de la que quieras dejar constancia, como las decisiones a la hora de organizar el código, las librerías extra que hayas añadido para facilitar el trabajo, problemas que te hayas encontrado, soluciones alternativas que te gustaría haber probado, etc.
+## Security Vulnerabilities
 
-Nos gusta que nos den este tipo de feedback ya que nos ayuda a valorar mejor y de forma objetiva la prueba técnica.
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
