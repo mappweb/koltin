@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\PostCommentRequest;
+use App\Http\Requests\Admin\UserCommentRequest;
 use App\Models\Comment;
-use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -57,16 +56,16 @@ class UserCommentController extends Controller
             ->findOrNew($id);
         $data['user'] = $user;
 
-        return view('admin.comment.modal-save', $data);
+        return view('admin.user-comment.modal-save', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param PostCommentRequest $request
+     * @param UserCommentRequest $request
      * @return JsonResponse
      */
-    public function store(PostCommentRequest $request)
+    public function store(UserCommentRequest $request)
     {
         return $this->storeOrUpdate($request);
     }
@@ -74,11 +73,11 @@ class UserCommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PostCommentRequest $request
+     * @param UserCommentRequest $request
      * @param Comment $comment
      * @return JsonResponse
      */
-    public function update(PostCommentRequest $request, Comment $comment): JsonResponse
+    public function update(UserCommentRequest $request, Comment $comment): JsonResponse
     {
         return $this->storeOrUpdate($request, $comment->id);
     }
@@ -97,8 +96,8 @@ class UserCommentController extends Controller
             $values = array_merge(
                 Arr::except($values, ['post_id']),
                 [
-                    'model_type' => Post::class,
-                    'model_id' => $values['post_id'],
+                    'model_type' => User::class,
+                    'model_id' => $values['user_id'],
                 ]
             );
             Comment::query()->updateOrCreate(['id' => $id], $values);
@@ -128,7 +127,7 @@ class UserCommentController extends Controller
     {
         $data['comment'] = $comment;
 
-        return view('admin.comment.modal-destroy', $data);
+        return view('admin.user-comment.modal-destroy', $data);
     }
 
     /**

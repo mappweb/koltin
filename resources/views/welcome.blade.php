@@ -18,11 +18,11 @@
                                 <p class="card-text">
                                     {{ \Illuminate\Support\Str::limit(strip_tags($post->content), 67, $end='...') }}
                                 </p>
-                                <p class="card-text float-start">
+                                <a href="{{ route('users.show', ['user' => $post->created_by]) }}" class="card-text float-start">
                                     <small class="text-muted">
                                         {{ $post->author->full_name ?? '' }}
                                     </small>
-                                </p>
+                                </a>
                                 <a href="{{ route('blog.show', ['post' => $post->id]) }}" class="btn btn-primary float-end">
                                     @lang('general.messages.more')
                                 </a>

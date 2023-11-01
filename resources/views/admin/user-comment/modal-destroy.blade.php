@@ -1,4 +1,4 @@
-{!! Form::open(['class' => 'floating-labels delete-ajax', 'url' => route('comments.destroy', ['comment' => $comment->id])]) !!}
+{!! Form::open(['class' => 'floating-labels delete-ajax', 'url' => route('user-comments.destroy', ['comment' => $comment->id])]) !!}
 
 <div class="modal fade modal-crud" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
