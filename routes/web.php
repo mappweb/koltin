@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [WelcomeController::class, 'index'])->name('blog.index');
+Route::get('public-blog/{post}', [WelcomeController::class, 'show'])->name('public-blog.show');
 
 Auth::routes();
 

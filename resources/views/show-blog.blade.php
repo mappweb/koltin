@@ -4,7 +4,7 @@
     <div class="container">
         <div class="card border-0">
             <div class="card-body">
-                <h1 class="font-weight-bold text-dark">
+                <h1 class="fs-1 text-dark">
                     {{ $post->title }}
                 </h1>
                 <small class="text-muted float-start">
@@ -14,6 +14,13 @@
                 <p class="text-justify">
                     {{ strip_tags($post->content) }}
                 </p>
+                <div class="flex-fill align-items-center">
+                    <div class="fs-5 fw-bold">
+                        <a class="stretched-link" href="{{ route('users.show', ['user' => $post->created_by]) }}">
+                            {{ ucwords($post->author->full_name ?? '') }}
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         <hr class="hr"/>

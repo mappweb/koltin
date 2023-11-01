@@ -6,7 +6,7 @@
             <div class="modal-header">
                  @if($post->exists)
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        @lang('models/post.actions.edit') - {{ $post->label }}
+                        @lang('models/post.actions.edit') - {{ $post->title }}
                     </h1>
                 @else
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
@@ -31,7 +31,7 @@
                     <div class="col-md-12">
                         <div class="form-group m-b-40 focused">
                             {!! Form::label('content', __('models/post.fillable.content')) !!}
-                            {!! Form::textarea('content', $post->content , ['class' => 'form-control summernote']) !!}
+                            {!! Form::textarea('content', $post->content, ['class' => 'form-control summernote']) !!}
                             <span data-feedback="content"><small></small></span>
                         </div>
                     </div>

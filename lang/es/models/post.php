@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'module' => 'Post|Posts',
+    'module' => 'Publicación|Publicaciones',
     'fillable' => [
         'title' => 'Título',
         'content' => 'Contenido',
     ],
     'actions' => [
-        'create' => 'Crear post',
-        'edit' => 'Editar post',
-        'destroy' => 'Eliminar post',
+        'create' => 'Crear publicación',
+        'edit' => 'Editar publicación',
+        'destroy' => 'Eliminar publicación',
     ]
 ];
