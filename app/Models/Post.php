@@ -28,7 +28,7 @@ class Post extends Model
      */
     public function author(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'authorId');
+        return $this->belongsTo(User::class, 'created_by');
     }
 
     /**
@@ -36,6 +36,6 @@ class Post extends Model
      */
     public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'postId');
+        return $this->hasMany(Comment::class, 'post_id');
     }
 }

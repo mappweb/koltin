@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('postId')
+            $table->foreignUuid('post_id')
                 ->references('id')
-                ->on('users')
+                ->on('posts')
                 ->cascadeOnDelete()
                 ->cascadeOnUpdate();
             $table->text('content');

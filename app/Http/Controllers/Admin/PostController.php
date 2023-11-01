@@ -190,4 +190,17 @@ class PostController extends Controller
             ]
         ]);
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param Post $post
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show(Post $post)
+    {
+        $data['post'] = $post;
+
+        return view('show-blog', $data);
+    }
 }

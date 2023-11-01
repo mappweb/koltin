@@ -18,7 +18,7 @@ class Comment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'postId',
+        'post_id',
         'content',
     ];
 
@@ -27,6 +27,14 @@ class Comment extends Model
      */
     public function post(): BelongsTo
     {
-        return $this->belongsTo(Post::class, 'postId');
+        return $this->belongsTo(Post::class, 'post_id');
+    }
+
+    /**
+     * @return BelongsTo
+     */
+    public function createdBy(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by');
     }
 }

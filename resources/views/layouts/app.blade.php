@@ -79,7 +79,7 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4  bg-light text-dark">
         @yield('content')
     </main>
     <div id="modal-add"></div>
