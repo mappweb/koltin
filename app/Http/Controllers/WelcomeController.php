@@ -2,16 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Throwable;
-use Yajra\DataTables\Facades\DataTables;
-use Yajra\DataTables\Html\Builder;
+use App\Models\User;
 
 class WelcomeController extends Controller
 {
@@ -48,5 +40,18 @@ class WelcomeController extends Controller
         $data['post'] = $post;
 
         return view('show-blog', $data);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param User $user
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function showUserProfile(User $user)
+    {
+        $data['user'] = $user;
+
+        return view('show-user-profile', $data);
     }
 }

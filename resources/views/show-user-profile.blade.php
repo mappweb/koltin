@@ -13,6 +13,7 @@
             </div>
         </div>
         <hr class="hr"/>
+        @auth
         <div class="row">
             <div class="float-end mt-2 mb-2">
                 <a href="{{ route('user-comments.create', ['user' => $user->id]) }}"
@@ -21,6 +22,7 @@
                 </a>
             </div>
         </div>
+        @endauth
         <div class="row">
             <section style="background-color: #eee;">
                 <div class="container">

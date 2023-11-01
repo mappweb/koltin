@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index'])->name('blog.index');
 Route::get('public-blog/{post}', [WelcomeController::class, 'show'])->name('public-blog.show');
+Route::get('public-users/{user}/profile', [WelcomeController::class, 'showUserProfile'])->name('public-users.profile.show');
 
 Auth::routes();
 
@@ -45,7 +46,5 @@ Route::middleware(['auth'])->prefix('admin')
         $router->get('users/user-comments/{comment}/destroy-modal', [UserCommentController::class, 'destroyModal'])->name('user-comments.destroy-modal');
         $router->get('users/{user}/user-comments/create', [UserCommentController::class, 'create'])->name('user-comments.create');
         $router->post('users/user-comments', [UserCommentController::class, 'store'])->name('user-comments.store');
-        //$router->put('users/user-comments/{comment}', [UserCommentController::class, 'update'])->name('comments.update');
         $router->delete('users/user-comments/{comment}', [UserCommentController::class, 'destroy'])->name('user-comments.destroy');
-        //$router->resource('users/user-comments', UserCommentController::class)->except(['create']);
     });

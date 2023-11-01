@@ -14,24 +14,36 @@
                 <p class="text-justify">
                     {{ strip_tags($post->content) }}
                 </p>
-                <div class="flex-fill align-items-center">
-                    <div class="fs-5 fw-bold">
-                        <a class="stretched-link" href="{{ route('users.show', ['user' => $post->created_by]) }}">
-                            {{ ucwords($post->author->full_name ?? '') }}
-                        </a>
+                @guest
+                    <div class="flex-fill align-items-center">
+                        <div class="fs-5 fw-bold">
+                            <a class="stretched-link" href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}">
+                                {{ ucwords($post->author->full_name ?? '') }}
+                            </a>
+                        </div>
                     </div>
-                </div>
+                @else
+                    <div class="flex-fill align-items-center">
+                        <div class="fs-5 fw-bold">
+                            <a class="stretched-link" href="{{ route('users.show', ['user' => $post->created_by]) }}">
+                                {{ ucwords($post->author->full_name ?? '') }}
+                            </a>
+                        </div>
+                    </div>
+                @endguest
             </div>
         </div>
         <hr class="hr"/>
-        <div class="row">
-            <div class="float-end mt-2 mb-2">
-                <a href="{{ route('comments.create', ['post' => $post->id]) }}"
-                   class="btn btn-primary btn-sm float-end open-modal">
-                    @lang('models/comment.actions.postComment')
-                </a>
+        @auth
+            <div class="row">
+                <div class="float-end mt-2 mb-2">
+                    <a href="{{ route('comments.create', ['post' => $post->id]) }}"
+                       class="btn btn-primary btn-sm float-end open-modal">
+                        @lang('models/comment.actions.postComment')
+                    </a>
+                </div>
             </div>
-        </div>
+        @endauth
         <div class="row">
             <section style="background-color: #eee;">
                 <div class="container">
