@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Comment extends Model
 {
@@ -18,16 +19,17 @@ class Comment extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'post_id',
+        'model_type',
+        'model_id',
         'content',
     ];
 
     /**
-     * @return BelongsTo
+     * @return MorphTo
      */
-    public function post(): BelongsTo
+    public function module(): MorphTo
     {
-        return $this->belongsTo(Post::class, 'post_id');
+        return $this->morphTo(__FUNCTION__, 'model_type', 'model_id');
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PostRequest;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\JsonResponse;
@@ -101,10 +102,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param PostRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         return $this->storeOrUpdate($request);
     }
@@ -112,11 +113,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param PostRequest $request
      * @param Post $post
      * @return JsonResponse
      */
-    public function update(Request $request, Post $post): JsonResponse
+    public function update(PostRequest $request, Post $post): JsonResponse
     {
         return $this->storeOrUpdate($request, $post->id);
     }
@@ -131,7 +132,7 @@ class PostController extends Controller
         $success = true;
         DB::beginTransaction();
         try {
-            Post::query()->updateOrCreate(['id' => $id], $request->all());
+            Post::query()->updateOrCreate(['id' => $id], $request->validated());
             DB::commit();
         } catch (Throwable $exception) {
             DB::rollBack();

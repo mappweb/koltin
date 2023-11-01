@@ -3,14 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\PostCommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Throwable;
 
-class CommentController extends Controller
+class UserCommentController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -27,9 +30,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function create(Post $post)
+    public function create(User $user)
     {
-        return $this->createOrEdit($post);
+        return $this->createOrEdit($user);
     }
 
     /**
@@ -40,19 +43,19 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        return $this->createOrEdit($comment->post, $comment->id);
+        return $this->createOrEdit($comment->model, $comment->id);
     }
 
     /**
-     * @param Post $post
+     * @param User $user
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    private function createOrEdit(Post $post, $id = null)
+    private function createOrEdit(User $user, $id = null)
     {
         $data['comment'] = Comment::query()
             ->findOrNew($id);
-        $data['post'] = $post;
+        $data['user'] = $user;
 
         return view('admin.comment.modal-save', $data);
     }
@@ -60,10 +63,10 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param PostCommentRequest $request
      * @return JsonResponse
      */
-    public function store(Request $request)
+    public function store(PostCommentRequest $request)
     {
         return $this->storeOrUpdate($request);
     }
@@ -71,11 +74,11 @@ class CommentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
+     * @param PostCommentRequest $request
      * @param Comment $comment
      * @return JsonResponse
      */
-    public function update(Request $request, Comment $comment): JsonResponse
+    public function update(PostCommentRequest $request, Comment $comment): JsonResponse
     {
         return $this->storeOrUpdate($request, $comment->id);
     }
@@ -90,7 +93,15 @@ class CommentController extends Controller
         $success = true;
         DB::beginTransaction();
         try {
-            Comment::query()->updateOrCreate(['id' => $id], $request->all());
+            $values = $request->validated();
+            $values = array_merge(
+                Arr::except($values, ['post_id']),
+                [
+                    'model_type' => Post::class,
+                    'model_id' => $values['post_id'],
+                ]
+            );
+            Comment::query()->updateOrCreate(['id' => $id], $values);
             DB::commit();
         } catch (Throwable $exception) {
             DB::rollBack();

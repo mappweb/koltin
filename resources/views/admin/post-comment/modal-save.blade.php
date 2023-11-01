@@ -1,16 +1,16 @@
-{!! Form::open(['class' => 'save-ajax', 'url' => $post->exists? route('posts.update', ['post' => $post->id]) : route('posts.store'), 'method' => $post->exists? 'PUT' : 'POST']) !!}
+{!! Form::open(['class' => 'save-ajax', 'url' => $comment->exists? route('comments.update', ['comment' => $post->id]) : route('comments.store'), 'method' => $comment->exists? 'PUT' : 'POST']) !!}
 <!-- Modal -->
 <div class="modal fade modal-crud" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                 @if($post->exists)
+                 @if($comment->exists)
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        @lang('models/post.actions.edit') - {{ $post->label }}
+                        @lang('models/comment.actions.edit') - {{ $comment->label }}
                     </h1>
                 @else
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">
-                        @lang('models/post.actions.create')
+                        @lang('models/comment.actions.create')
                     </h1>
                 @endif
 
@@ -18,20 +18,12 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    {!! Form::hidden('post_id', $post->id) !!}
                     <!-- START REPEAT THIS COL -->
                     <div class="col-md-12">
                         <div class="form-group m-b-40 focused">
-                            {!! Form::label('title', __('models/post.fillable.title')) !!}
-                            {!! Form::text('title', $post->title , ['class' => 'form-control']) !!}
-                            <span data-feedback="title"><small></small></span>
-                        </div>
-                    </div>
-                    <!-- END REPEAT THIS COL -->
-                    <!-- START REPEAT THIS COL -->
-                    <div class="col-md-12">
-                        <div class="form-group m-b-40 focused">
-                            {!! Form::label('content', __('models/post.fillable.content')) !!}
-                            {!! Form::textarea('content', $post->content , ['class' => 'form-control summernote']) !!}
+                            {!! Form::label('content', __('models/comment.fillable.content')) !!}
+                            {!! Form::textarea('content', $comment->content , ['class' => 'form-control summernote']) !!}
                             <span data-feedback="content"><small></small></span>
                         </div>
                     </div>

@@ -10,7 +10,8 @@
                 <small class="text-muted float-start">
                     {{ $post->created_at->diffForHumans() }}
                 </small>
-                <p class="text-center justify-content-center">
+                <br>
+                <p class="text-justify">
                     {{ strip_tags($post->content) }}
                 </p>
             </div>
@@ -42,16 +43,19 @@
                                                 </p>
                                             </div>
                                         </div>
-
-                                        <p class="mt-3 mb-4 pb-2">
+                                        <p class="mt-3 mb-4 pb-2 text-justify">
                                             {{ strip_tags($comment->content) }}
                                         </p>
 
                                         <div class="float-end">
-                                            <a class="btn btn-danger open-modal" href="{{ route('comments.destroy-modal', ['comment' => $comment->id]) }}" data-toggle="tooltip"
-                                               title="{{ __('models/comment.actions.destroy') }}">
-                                                @lang('models/comment.actions.destroy')
-                                            </a>
+                                            @if($comment->created_by === Auth::id())
+                                                <a class="btn btn-danger open-modal"
+                                                   href="{{ route('comments.destroy-modal', ['comment' => $comment->id]) }}"
+                                                   data-toggle="tooltip"
+                                                   title="{{ __('models/comment.actions.destroy') }}">
+                                                    @lang('models/comment.actions.destroy')
+                                                </a>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>

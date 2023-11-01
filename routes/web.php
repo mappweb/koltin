@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\CommentController;
+use App\Http\Controllers\Admin\PostCommentController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Routing\Router;
@@ -31,8 +31,8 @@ Route::middleware(['auth'])->prefix('admin')
             ->name('posts.destroy-modal');
         $router->resource('posts', PostController::class);
 
-        $router->get('posts/{post}/comments/create', [CommentController::class, 'create'])->name('comments.create');
-        $router->get('posts/comments/{comment}/destroy-modal', [CommentController::class, 'destroyModal'])
+        $router->get('posts/{post}/comments/create', [PostCommentController::class, 'create'])->name('comments.create');
+        $router->get('posts/comments/{comment}/destroy-modal', [PostCommentController::class, 'destroyModal'])
             ->name('comments.destroy-modal');
-        $router->resource('posts/comments', CommentController::class)->except(['create']);
+        $router->resource('posts/comments', PostCommentController::class)->except(['create']);
     });

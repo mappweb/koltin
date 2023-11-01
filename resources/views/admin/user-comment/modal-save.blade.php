@@ -18,13 +18,13 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    {!! Form::hidden('post_id', $post->id) !!}
+                    {!! Form::hidden('user_id', $user->id) !!}
                     <!-- START REPEAT THIS COL -->
                     <div class="col-md-12">
                         <div class="form-group m-b-40 focused">
                             {!! Form::label('content', __('models/comment.fillable.content')) !!}
                             {!! Form::textarea('content', $comment->content , ['class' => 'form-control summernote']) !!}
-                            <span data-message="content"><small></small></span>
+                            <span data-feedback="content"><small></small></span>
                         </div>
                     </div>
                     <!-- END REPEAT THIS COL -->
