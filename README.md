@@ -53,13 +53,30 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Api
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Documentations: ~/documents/Koltin.postman_collection.json
 
-## Security Vulnerabilities
+- Login
+> POST /api/v1/login
+> > * Params: {
+"email": "diego.toscanof@gmail.com",
+"password": "12345678"
+}
+- Logout
+> POST /api/v1/logout
+> > * Headers: {
+      "authorization": "bearer {token}"
+      }
+- 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Command
+
+Export to google sheets the comments in a date range.
+
+> php artisan data-export:comment --startDate="2023-11-01" --endDate="2023-11-01"
+> 
+
 
 ## License
 

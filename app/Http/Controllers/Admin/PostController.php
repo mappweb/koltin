@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostRequest;
-use App\Models\Comment;
 use App\Models\Post;
+use App\Repositories\Contracts\ModelRepository;
+use App\Repositories\Contracts\PostRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,13 +18,19 @@ use Yajra\DataTables\Html\Builder;
 class PostController extends Controller
 {
     /**
+     * @var PostRepositoryInterface
+     */
+    private PostRepositoryInterface $postRepository;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(PostRepositoryInterface $postRepository)
     {
         $this->middleware('auth');
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -132,7 +139,7 @@ class PostController extends Controller
         $success = true;
         DB::beginTransaction();
         try {
-            Post::query()->updateOrCreate(['id' => $id], $request->validated());
+            $this->postRepository->createOrUpdate($request->validated(), $id);
             DB::commit();
         } catch (Throwable $exception) {
             DB::rollBack();
@@ -165,10 +172,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Post $post
-     * @return \Illuminate\Http\Response
+     * @param Post $post
+     * @return JsonResponse
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): JsonResponse
     {
         $success = true;
         DB::beginTransaction();

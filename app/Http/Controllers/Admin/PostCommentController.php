@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\PostCommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Repositories\Contracts\CommentRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
@@ -15,13 +16,19 @@ use Throwable;
 class PostCommentController extends Controller
 {
     /**
+     * @var CommentRepositoryInterface
+     */
+    private CommentRepositoryInterface $commentRepository;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CommentRepositoryInterface $commentRepository)
     {
         $this->middleware('auth');
+        $this->commentRepository = $commentRepository;
     }
 
     /**
@@ -100,7 +107,7 @@ class PostCommentController extends Controller
                     'model_id' => $values['post_id'],
                 ]
             );
-            Comment::query()->updateOrCreate(['id' => $id], $values);
+            $this->commentRepository->createOrUpdate($values, $id);
             DB::commit();
         } catch (Throwable $exception) {
             DB::rollBack();
@@ -134,9 +141,9 @@ class PostCommentController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Comment $comment
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
-    public function destroy(Comment $comment)
+    public function destroy(Comment $comment): JsonResponse
     {
         $success = true;
         DB::beginTransaction();

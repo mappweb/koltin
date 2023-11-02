@@ -5,11 +5,14 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\PostWithCommentAndAuthorResource;
 use App\Models\Post;
+use App\Traits\PaginateJsonResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class GetAllPostController extends Controller
 {
+    use PaginateJsonResponse;
+
     /**
      * Get all posts with comments and authors.
      *
@@ -24,17 +27,10 @@ class GetAllPostController extends Controller
            'page',
            $request->get('page', 1),
        );
+
        return response()->json([
            'message' => 'Post list successfully',
-           'data' => [
-               'firstItem' => $paginator->firstItem(),
-               'lastItem' => $paginator->lastItem(),
-               'perPage' => $paginator->perPage(),
-               'currentPage' => $paginator->currentPage(),
-               'lastPage' => $paginator->lastPage(),
-               'total' => $paginator->total(),
-               'items' => PostWithCommentAndAuthorResource::collection($paginator->items()),
-           ],
+           'data' => $this->paginate($paginator, PostWithCommentAndAuthorResource::class),
        ]);
    }
 }

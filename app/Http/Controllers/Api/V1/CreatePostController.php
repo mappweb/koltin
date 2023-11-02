@@ -24,7 +24,7 @@ class CreatePostController extends Controller
             return response()->json([
                 'message' => 'Validation Error',
                 'data' => $validator->errors(),
-            ], 423);
+            ], 422);
         }
 
         return response()->json([
@@ -41,10 +41,11 @@ class CreatePostController extends Controller
      */
     private function create(array $data)
     {
-        return Post::query()->create([
-            'title' => $data['title'],
-            'content' => $data['content'],
-        ]);
+        return Post::query()
+            ->create([
+                'title' => $data['title'],
+                'content' => $data['content'],
+            ]);
     }
 
     /**
