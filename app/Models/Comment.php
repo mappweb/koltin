@@ -39,4 +39,14 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    /**
+     * To whom the comment is addressed
+     *
+     * @return string
+     */
+    public function toAny(): string
+    {
+        return $this->model instanceof Post ? trans_choice('models/post.module', 1) : __('models/post.fillable.author');
+    }
 }

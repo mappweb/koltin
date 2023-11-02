@@ -11,7 +11,8 @@ The requirements were analyzed. The model related to the blog and the entities i
 
 ## External Libraries
 
-. [Yajra Datatables](https://yajrabox.com/docs/laravel-datatables/9.0): Laravel DataTables is a package that handles the server-side works of DataTables using Laravel.
+* [Yajra Datatables](https://yajrabox.com/docs/laravel-datatables/9.0): Laravel DataTables is a package that handles the server-side works of DataTables using Laravel.
+* [laravel-google-sheets](https://github.com/kawax/laravel-google-sheets): Laravel google sheets integration.
 
 ## Contributing
 

@@ -5,6 +5,7 @@ return [
     'fillable' => [
         'title' => 'Título',
         'content' => 'Contenido',
+        'author' => 'Autor',
     ],
     'actions' => [
         'create' => 'Crear publicación',

@@ -6,6 +6,7 @@ use App\Models\Comment;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Revolution\Google\Sheets\Facades\Sheets;
 
 class CommentExportCommand extends Command
 {
@@ -46,8 +47,17 @@ class CommentExportCommand extends Command
                     $endDate->toDateString()
                 ]
             )->get();
+        $data = [];
         foreach ($comments as $comment) {
-            $this->comment($comment->content);
+            $data[] = [
+                'origen' => $comment->toAny(),
+                'content' => $comment->content,
+            ];
+        }
+        try {
+            Sheets::sheet(trans_choice('models/comment.module', 2))->append($data);
+        } catch (\Throwable $exception) {
+            $this->comment($exception->getMessage());
         }
 
         return Command::SUCCESS;
