@@ -38,5 +38,5 @@ return [
         'another_request' => 'Enviar Nueva Solicitud',
         'welcome_email' => 'Enviar Email de Bienvenida',
     ],
-    'anonymous_user' => 'Usuario anónimo',
+    'anonymous_user' => 'Usuario Anónimo',
 ];

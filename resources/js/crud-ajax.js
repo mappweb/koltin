@@ -73,6 +73,9 @@
                     if (response.resetForm) {
                         form.trigger('reset');
                     }
+                    if (response.reloadPage){
+                        location.reload();
+                    }
                     if (response.refreshTable) {
                         ADMIN.ELEMENTS.body.trigger('datatable.refresh');
                     }
@@ -169,9 +172,10 @@
      */
     function showErrors(response) {
         let errors = JSON.parse(response.responseText).errors;
+
         $.each(errors, function (element, index) {
             $('[name=' + element + ']').addClass('is-invalid');
-            $('div[data-feedback="' + element + '"]').addClass('invalid-feedback').text(index);
+            $('small', 'span[data-feedback="' + element + '"]').text(index).addClass('text-danger');
         });
     }
 

@@ -19,31 +19,13 @@
                                     {{ \Illuminate\Support\Str::limit(strip_tags($post->content), 67, $end='...') }}
                                 </p>
                                 @guest
-                                    @if(empty($post->created_by))
-                                        <div class="card-text float-start">
-                                            <small class="text-muted">
-                                                {{ $post->author->full_name ?? '' }}
-                                            </small>
-                                        </div>
-                                    @else
-                                        <a href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}"
-                                           class="card-text float-start">
-                                            <small class="text-muted">
-                                                {{ $post->author->full_name ?? __('auth.anonymous_user') }}
-                                            </small>
-                                        </a>
-                                    @endif
+                                    @include('welcome.parts.author', ['post' => $post, 'route' => route('public-users.profile.show', ['user' => $post->created_by])])
                                     <a href="{{ route('public-blog.show', ['post' => $post->id]) }}"
                                        class="btn btn-primary float-end">
                                         @lang('general.messages.more')
                                     </a>
                                 @else
-                                    <a href="{{ route('users.show', ['user' => $post->created_by]) }}"
-                                       class="card-text float-start">
-                                        <small class="text-muted">
-                                            {{ $post->author->full_name ?? '' }}
-                                        </small>
-                                    </a>
+                                    @include('welcome.parts.author', ['post' => $post, 'route' => route('users.show', ['user' => $post->created_by])])
                                     <a href="{{ route('blog.show', ['post' => $post->id]) }}"
                                        class="btn btn-primary float-end">
                                         @lang('general.messages.more')
