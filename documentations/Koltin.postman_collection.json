@@ -1,0 +1,719 @@
+{
+	"info": {
+		"_postman_id": "32387a85-eb6b-400b-baaf-630a0e554c63",
+		"name": "Koltin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27227408"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"diego.toscanof@gmail.com\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/login",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				},
+				"description": "Iniciar sesión."
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"diego.toscanof@gmail.com\",\n    \"password\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:25:20 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:25:20 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n        \"fullName\": \"Diego Toscano\",\n        \"email\": \"diego.toscanof@gmail.com\"\n    },\n    \"authorization\": {\n        \"token\": \"8|tb3hw8GcqP5hmgzmRraPwPKpe4iqItP8c4NHRN16eec28b09\",\n        \"type\": \"bearer\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "paginate posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|tb3hw8GcqP5hmgzmRraPwPKpe4iqItP8c4NHRN16eec28b09",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"perPage\": \"10\",\n    \"page\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				},
+				"description": "Listado de todas las publicaciones."
+			},
+			"response": [
+				{
+					"name": "Paginate posts",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"perPage\": \"10\",\n    \"page\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:33:06 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:33:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User created successfully\",\n    \"data\": {\n        \"firstItem\": 1,\n        \"lastItem\": 5,\n        \"perPage\": 10,\n        \"currentPage\": 1,\n        \"lastPage\": 1,\n        \"total\": 5,\n        \"items\": [\n            {\n                \"id\": \"9a81bae4-9663-4726-97eb-5edc7ccf63b6\",\n                \"title\": \"Mi primer post\",\n                \"content\": \"Example de publicación.\",\n                \"author\": {\n                    \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n                    \"fullName\": \"Diego Toscano\",\n                    \"email\": \"diego.toscanof@gmail.com\"\n                },\n                \"comments\": [\n                    {\n                        \"id\": \"9a82f266-a27e-497e-9c21-72e284149030\",\n                        \"content\": \"<p>Prueba de comentario en primer post</p>\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"9a81bb7f-a034-4148-8741-ebee937c4a34\",\n                \"title\": \"Mi primer post\",\n                \"content\": \"<p>Mi primer post</p>\",\n                \"author\": {\n                    \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n                    \"fullName\": \"Diego Toscano\",\n                    \"email\": \"diego.toscanof@gmail.com\"\n                },\n                \"comments\": [\n                    {\n                        \"id\": \"9a831a32-1517-4991-a91d-9d64cf8a1eeb\",\n                        \"content\": \"<p>Puede escribir una segunda publicación sobre este tema es muy interesante.</p>\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"9a81bba2-818b-47eb-b493-bbb8eaaa3a8c\",\n                \"title\": \"HOla\",\n                \"content\": \"<p>Hola</p>\",\n                \"author\": {\n                    \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n                    \"fullName\": \"Diego Toscano\",\n                    \"email\": \"diego.toscanof@gmail.com\"\n                },\n                \"comments\": [\n                    {\n                        \"id\": \"9a82f227-83fb-4f9f-ad52-654e707e9fa9\",\n                        \"content\": \"<p>Prueba de comentario en hola</p>\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"9a82ac1a-19ec-40be-b3b5-6ff13ffb8f6c\",\n                \"title\": \"Hola Mundo\",\n                \"content\": \"<p>Hola Mundo<br></p>\",\n                \"author\": {\n                    \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n                    \"fullName\": \"Diego Toscano\",\n                    \"email\": \"diego.toscanof@gmail.com\"\n                },\n                \"comments\": []\n            },\n            {\n                \"id\": \"9a82e94c-5a78-4690-a62b-5a0375f51096\",\n                \"title\": \"Prueba de comentarios de post\",\n                \"content\": \"<p><span style=\\\"color: rgb(102, 102, 102); font-family: Verdana, Geneva, sans-serif; font-size: 10px;\\\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</span><br></p>\",\n                \"author\": {\n                    \"id\": \"9a82db5c-9433-4e48-ae2d-788314e31dc4\",\n                    \"fullName\": \"Diego Toscano\",\n                    \"email\": \"diego.toscanof@hotmail.com\"\n                },\n                \"comments\": [\n                    {\n                        \"id\": \"9a82f201-5d49-49dc-ae06-fe84c9ef6ecf\",\n                        \"content\": \"<p>Prueba de comentario</p>\"\n                    },\n                    {\n                        \"id\": \"9a830d4b-5336-4e65-8305-2b05a2a52645\",\n                        \"content\": \"<p>Siga así</p>\"\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "paginate authors",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|tb3hw8GcqP5hmgzmRraPwPKpe4iqItP8c4NHRN16eec28b09",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"perPage\": \"10\",\n    \"page\": \"1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/authors",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"authors"
+					]
+				},
+				"description": "Listado de todos los autores"
+			},
+			"response": [
+				{
+					"name": "Paginate authors",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"perPage\": \"10\",\n    \"page\": \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/authors",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"authors"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:47:56 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:47:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "57"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User lists successfully\",\n    \"data\": {\n        \"firstItem\": 1,\n        \"lastItem\": 4,\n        \"perPage\": 10,\n        \"currentPage\": 1,\n        \"lastPage\": 1,\n        \"total\": 4,\n        \"items\": [\n            {\n                \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n                \"fullName\": \"Diego Toscano\",\n                \"email\": \"diego.toscanof@gmail.com\",\n                \"comments\": [\n                    {\n                        \"id\": \"9a830520-137c-4115-bed7-62fd4434baab\",\n                        \"content\": \"<p>Es un muy buen autor.</p>\"\n                    },\n                    {\n                        \"id\": \"9a8305c3-ebd8-4e84-9205-bf40b2a0cf48\",\n                        \"content\": \"<p>Excelente sus aportes.</p>\"\n                    },\n                    {\n                        \"id\": \"9a831897-c609-491f-afbd-71537096ffd2\",\n                        \"content\": \"<p>buena persona</p>\"\n                    }\n                ],\n                \"posts\": [\n                    {\n                        \"id\": \"9a81bae4-9663-4726-97eb-5edc7ccf63b6\",\n                        \"title\": \"Mi primer post\",\n                        \"content\": \"Example de publicación.\"\n                    },\n                    {\n                        \"id\": \"9a81bb7f-a034-4148-8741-ebee937c4a34\",\n                        \"title\": \"Mi primer post\",\n                        \"content\": \"<p>Mi primer post</p>\"\n                    },\n                    {\n                        \"id\": \"9a81bba2-818b-47eb-b493-bbb8eaaa3a8c\",\n                        \"title\": \"HOla\",\n                        \"content\": \"<p>Hola</p>\"\n                    },\n                    {\n                        \"id\": \"9a82ac1a-19ec-40be-b3b5-6ff13ffb8f6c\",\n                        \"title\": \"Hola Mundo\",\n                        \"content\": \"<p>Hola Mundo<br></p>\"\n                    },\n                    {\n                        \"id\": \"9a835804-7a10-453a-a785-84a984ef4563\",\n                        \"title\": \"Post desde Api\",\n                        \"content\": \"Post desde Api\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"9a82db5c-9433-4e48-ae2d-788314e31dc4\",\n                \"fullName\": \"Diego Toscano\",\n                \"email\": \"diego.toscanof@hotmail.com\",\n                \"comments\": [\n                    {\n                        \"id\": \"9a830bd8-f6dd-4718-bca8-cbf234786b03\",\n                        \"content\": \"<p>Excelente autor</p>\"\n                    }\n                ],\n                \"posts\": [\n                    {\n                        \"id\": \"9a82e94c-5a78-4690-a62b-5a0375f51096\",\n                        \"title\": \"Prueba de comentarios de post\",\n                        \"content\": \"<p><span style=\\\"color: rgb(102, 102, 102); font-family: Verdana, Geneva, sans-serif; font-size: 10px;\\\">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc,</span><br></p>\"\n                    }\n                ]\n            },\n            {\n                \"id\": \"9a8315ad-228e-4372-94f9-52f7aa3bf636\",\n                \"fullName\": \"Andrea Mendez\",\n                \"email\": \"acuello9907@gmail.com\",\n                \"comments\": [],\n                \"posts\": []\n            },\n            {\n                \"id\": \"9a8344d0-9fde-466e-b3a7-0a07cedc340a\",\n                \"fullName\": \"Clara Morales\",\n                \"email\": \"claramoralesconde28@gmail.com\",\n                \"comments\": [],\n                \"posts\": []\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Create post",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "8|tb3hw8GcqP5hmgzmRraPwPKpe4iqItP8c4NHRN16eec28b09",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Post desde Api\",\n    \"content\": \"Post desde Api\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/posts",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"posts"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create post",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Post desde Api\",\n    \"content\": \"Post desde Api\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/posts",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"posts"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:38:00 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:38:00 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Post created successfully\",\n    \"user\": {\n        \"id\": \"9a835804-7a10-453a-a785-84a984ef4563\",\n        \"title\": \"Post desde Api\",\n        \"content\": \"Post desde Api\",\n        \"author\": {\n            \"id\": \"94236d9e-7860-11ee-b962-0242ac120002\",\n            \"fullName\": \"Diego Toscano\",\n            \"email\": \"diego.toscanof@gmail.com\"\n        },\n        \"comments\": []\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Clara\",\n    \"last_name\": \"Morales\",\n    \"email\": \"diego.toscanof@koltin.com\",\n    \"password\": \"12345678\",\n    \"password_confirmation\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/register",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "register",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Clara\",\n    \"last_name\": \"Morales\",\n    \"email\": \"diego.toscanof@koltin.com\",\n    \"password\": \"12345678\",\n    \"password_confirmation\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:53:05 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 01:53:05 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"User created successfully\",\n    \"user\": {\n        \"id\": \"9a835d68-d447-465d-aad5-caa7e0feb742\",\n        \"fullName\": \"Clara Morales\",\n        \"email\": \"diego.toscanof@koltin.com\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "6|LjBohZXJ4l3Qp0wEK0g0dxFsTUhPe6pLDtvsmBaN29db3748",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://0.0.0.0:8000/api/v1/logout",
+					"protocol": "http",
+					"host": [
+						"0",
+						"0",
+						"0",
+						"0"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"logout"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "logout",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://0.0.0.0:8000/api/v1/logout",
+							"protocol": "http",
+							"host": [
+								"0",
+								"0",
+								"0",
+								"0"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Host",
+							"value": "0.0.0.0:8000"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 00:56:51 GMT"
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 02 Nov 2023 00:56:51 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "PHP/8.0.28"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, private"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "X-RateLimit-Limit",
+							"value": "60"
+						},
+						{
+							"key": "X-RateLimit-Remaining",
+							"value": "59"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully logged out\"\n}"
+				}
+			]
+		}
+	]
+}
