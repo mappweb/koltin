@@ -19,12 +19,20 @@
                                     {{ \Illuminate\Support\Str::limit(strip_tags($post->content), 67, $end='...') }}
                                 </p>
                                 @guest
-                                    <a href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}"
-                                       class="card-text float-start">
-                                        <small class="text-muted">
-                                            {{ $post->author->full_name ?? '' }}
-                                        </small>
-                                    </a>
+                                    @if(empty($post->created_by))
+                                        <div class="card-text float-start">
+                                            <small class="text-muted">
+                                                {{ $post->author->full_name ?? '' }}
+                                            </small>
+                                        </div>
+                                    @else
+                                        <a href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}"
+                                           class="card-text float-start">
+                                            <small class="text-muted">
+                                                {{ $post->author->full_name ?? __('auth.anonymous_user') }}
+                                            </small>
+                                        </a>
+                                    @endif
                                     <a href="{{ route('public-blog.show', ['post' => $post->id]) }}"
                                        class="btn btn-primary float-end">
                                         @lang('general.messages.more')
@@ -45,7 +53,9 @@
                         </div>
                     </div>
                 @endforeach
-                {{ $posts->links() }}
+                    <div class="d-flex">
+                        {!! $posts->links() !!}
+                    </div>
             </div>
         </div>
     </div>

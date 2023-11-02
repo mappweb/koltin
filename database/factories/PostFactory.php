@@ -17,12 +17,12 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $user = User::factory();
+        $user = User::query()->inRandomOrder()->first() ?? User::factory()->create();
         return [
             'title' => fake()->title(),
             'content' => fake()->paragraph(),
-            'created_by' => $user,
-            'updated_by' => $user,
+            'created_by' => $user->id,
+            'updated_by' => $user->id,
         ];
     }
 }

@@ -17,9 +17,16 @@
                 @guest
                     <div class="flex-fill align-items-center">
                         <div class="fs-5 fw-bold">
-                            <a class="stretched-link" href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}">
-                                {{ ucwords($post->author->full_name ?? '') }}
-                            </a>
+                            @if(empty($post->created_by))
+                                <div class="stretched-link">
+                                    {{ ucwords($post->author->full_name ?? __('auth.anonymous_user')) }}
+                                </div>
+                            @else
+                                <a class="stretched-link"
+                                   href="{{ route('public-users.profile.show', ['user' => $post->created_by]) }}">
+                                    {{ ucwords($post->author->full_name ?? '') }}
+                                </a>
+                            @endif
                         </div>
                     </div>
                 @else
