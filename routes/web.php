@@ -46,5 +46,7 @@ Route::middleware(['auth'])->prefix('admin')
         $router->get('users/user-comments/{comment}/destroy-modal', [UserCommentController::class, 'destroyModal'])->name('user-comments.destroy-modal');
         $router->get('users/{user}/user-comments/create', [UserCommentController::class, 'create'])->name('user-comments.create');
         $router->post('users/user-comments', [UserCommentController::class, 'store'])->name('user-comments.store');
+        $router->get('users/user-comments/{comment}', [UserCommentController::class, 'edit'])->name('user-comments.edit');
+        $router->put('users/user-comments/{comment}', [UserCommentController::class, 'update'])->name('user-comments.update');
         $router->delete('users/user-comments/{comment}', [UserCommentController::class, 'destroy'])->name('user-comments.destroy');
     });

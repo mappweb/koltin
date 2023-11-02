@@ -27,7 +27,7 @@ class Comment extends Model
     /**
      * @return MorphTo
      */
-    public function module(): MorphTo
+    public function model(): MorphTo
     {
         return $this->morphTo(__FUNCTION__, 'model_type', 'model_id');
     }

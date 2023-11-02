@@ -1,4 +1,4 @@
-{!! Form::open(['class' => 'save-ajax', 'url' => $comment->exists? route('user-comments.update', ['comment' => $post->id]) : route('user-comments.store'), 'method' => $comment->exists? 'PUT' : 'POST']) !!}
+{!! Form::open(['class' => 'save-ajax', 'url' => $comment->exists? route('user-comments.update', ['comment' => $comment->id]) : route('user-comments.store'), 'method' => $comment->exists? 'PUT' : 'POST']) !!}
 <!-- Modal -->
 <div class="modal fade modal-crud" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

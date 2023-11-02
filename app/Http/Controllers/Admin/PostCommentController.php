@@ -49,7 +49,7 @@ class PostCommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        return $this->createOrEdit($comment->post, $comment->id);
+        return $this->createOrEdit($comment->model, $comment->id);
     }
 
     /**
