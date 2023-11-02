@@ -46,6 +46,7 @@ Export to google sheets the comments in a date range.
 > 
 
 
-## License
+## Compile asset
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+> npm run build
+> 
